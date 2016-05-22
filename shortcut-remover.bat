@@ -25,7 +25,6 @@ IF /I "%dellinks%" NEQ "Y" GOTO THANKS
 del %driveletter%:/*.lnk
 GOTO THANKS
 
-
 :THANKS
 cls
 echo Your Drive has been fixed!
