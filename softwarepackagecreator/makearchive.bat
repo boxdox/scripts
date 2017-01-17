@@ -1,6 +1,5 @@
 @echo OFF
-title Software Package Creator"
-cls
+title Software Package Creator
 cd putfileshere
 goto mainpage
 
@@ -18,22 +17,22 @@ IF /I "%compress%"=="4" goto compress4
 
 :compress1
 color 0d
-..\7z.exe a -tzip ..\generated.zip *.* -mx0
+..\7z.exe a -r -tzip ..\generated.zip *.* -mx0
 goto confirmdelete
 
 :compress2
 color 09
-..\7z.exe a -tzip ..\generated.zip *.* -mx1
+..\7z.exe a -r -tzip ..\generated.zip *.* -mx1
 goto confirmdelete
 
 :compress3
 color 0a
-..\7z.exe a -tzip ..\generated.zip *.* -mx5
+..\7z.exe a -r -tzip ..\generated.zip *.* -mx5
 goto confirmdelete
 
 :compress4
 color 0c
-..\7z.exe a -tzip ..\generated.zip *.* -mx9
+..\7z.exe a -r -tzip ..\generated.zip *.* -mx9
 goto confirmdelete
 
 :confirmdelete
@@ -66,7 +65,8 @@ If /I "%deleteconfirm%"=="y" goto deletefiles
 If /I "%deleteconfirm%"=="n" goto exit 
 
 :deletefiles
-del *.* /F /Q
+del *.* /S  /F /Q
+for /D %%i in (*) do rd /s /q "%%i
 goto deleteexit
 
 :deleteexit
